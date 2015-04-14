@@ -17,15 +17,12 @@ _____________________________________
 
 	- ADD – Add (with overflow)
 	- ADDI -- Add immediate (with overflow)
-	- ADDIU -- Add immediate unsigned (no overflow)
 	- ADDU -- Add unsigned (no overflow)
 	- AND -- Bitwise and
-	- ANDI -- Bitwise and immediate
 	- BEQ -- Branch on equal
 	- BGEZ -- Branch on greater than or equal to zero
 	- BGTZ -- Branch on greater than zero
 	- BLEZ -- Branch on less than or equal to zero
-	- BLTZ -- Branch on less than zero
 	- BNE -- Branch on not equal
 	- DIV -- Divide
 	- DIVU -- Divide unsigned
@@ -33,8 +30,6 @@ _____________________________________
 	- JAL -- Jump and link
 	- JR -- Jump register
 	- LW -- Load word
-	- MFHI -- Move from HI
-	- MFLO -- Move from LO
 	- MULT -- Multiply
 	- NOOP -- no operation
 	- OR -- Bitwise or
@@ -214,34 +209,65 @@ print a
 
 ```
 
-Complex Assignment Statements
-__________________________________
-
+Function call from another function
+__________________________________________
 ```
-a = [0,1,2,3,4,5]
-b = a[1] + a[a[a[0]]]
-a[2] = a[ a[2] + 1 + b*1] 
-
+def f():
+	return 1
+def f1():
+	a = f()
+	return 2*a
+x = f1()
+print x
 ```
-Complex String Assignment
-______________________________
-```
-	s = ["this",
-"is",
-"not",
-"new",
-"line"]
+Recursion
+_______________________________
 ```
 
-Binary , Octal & Hexadecimal
-_________________________________
+def sum(n):
+	if n == 0 :
+		return 0
+	a = sum(n-1)
+	return a + n
+x = sum(100)
+print x
+```
+
+Nested Functions : A special feature of our compiler
+_________________________________________________
+```
+def f():
+	return 9
+
+def fib(n):
+	def f4():
+		print 7
+		def funinception():
+			print 42
+			return 44
+		a = funinception()
+		print a
+		return a
+	n = f4()
+	return n	
+	print 3
+
+x = fib(3)
+print x
+```
+Break Statement
+__________________________
 
 ```
-z = 0b101010
-x = 0o325047324
-y = 0x42BA34
-print x,y,z
+for i in [1,2,3]:
+  if i == 2:
+    break
+  else :
+    i = 3
 ```
+
+
+
 
 Continue Statement
 __________________________
@@ -254,36 +280,33 @@ for i in [1,2,3]:
     i = 3
 ```
 
-Complex recursive codes (8 Queens Problem)
-____________________________
+# Python Compiler
 
-```
-BOARD_SIZE = 8
+## Language Features
+- Recursive Functions 
+	- Python supports recursive functions and so does our compiler
+- Function call 
+	- Function call can be made from another function 
 
-def under_attack(col, queens):
-  left = right = col
+- Nested Functions
+    -Python language supports a function to be nested within a function
+    -Our compiler supports one function to be only accessible within the scope of another function	
 
-  for r, c in reversed(queens):
-    left, right = left - 1, right + 1
+- Register Allocation:
+    - Remove redundancy as both caller and callee are flushing registers.
+    - Make use of dirty bit
+    - Update flushtemporary and flsuh registers to make used of function name
+    	and dirty bit
+    - Use nextReg heuristic from the Dragon Book for better optimization 
+- Arguments of functions
+    - Number of parameters can be varied
+    - At function call time, we know the number of parameters passed
 
-    if c in (left, col, right):
-      return True
-  return False
-
-def solve(n):
-  if n == 0:
-    return [[]]
-
-  smaller_solutions = solve(n - 1)
-  
-  return [solution+[(n,i+1)]
-  for i in xrange(BOARD_SIZE)
-    for solution in smaller_solutions
-      if not under_attack(i+1, solution)]
-
-
-for answer in solve(BOARD_SIZE):
-  print answer
-
-```
+## Optimizations
+- Code Motion
+- Common Sub expression removal
+- The nextReg and getReg functions work well after doing block analysis of the code block 
+- All the operations are computed with the help of Registers which are asymptotically
+- The stack is used generously used which is faster in an amortized manner
+## Issues
 
