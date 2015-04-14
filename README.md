@@ -135,22 +135,6 @@ if a == 10:
 else :
   print 2
 ```
-For Statement
-___________________________
-
-Type 1
-_______
-```
-a = [1, 2, 3, 9, 7, 3]
-for i in a:
-  c = i * i + 3 / 2
-```
-Type 2
-____________
-```
-for var in [1,3,6,7]:
-  print var*var
-```
 
 While Statement
 _____________________________
@@ -209,14 +193,14 @@ Some Library function calls
 _________________________________
 
 
-*max
-_________
+* max
+```
 print max(4,5)
-
-*min
-___________
+```
+* min
+```
 print min(4,5)
-
+```
 Function Without Parameters
 ______________________________________
 
