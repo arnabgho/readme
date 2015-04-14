@@ -24,10 +24,11 @@ _____________________________________
 	- BLEZ -- Branch on less than or equal to zero
 	- BNE -- Branch on not equal
 	- DIV -- Divide
-	- J -- Jump
 	- JAL -- Jump and link
 	- JR -- Jump register
 	- LW -- Load word
+	- LI -- Load Immediate
+	- LA --	Load Address
 	- MULT -- Multiply
 	- NOOP -- no operation
 	- OR -- Bitwise or
@@ -37,7 +38,17 @@ _____________________________________
 	- SW -- Store word
 	- SYSCALL -- System call
 	- SRL -- Shift right logical
-
+	- LI -- Load Immediate
+	- SNE -- Signed Not Equal
+	- SLL -- Signed Left Shift
+	- SLT -- Signed Less Than
+	- SGT -- Signed Greater Than
+	- SLE -- Signed Less Than or Equal to
+	- SGE -- Signed Greater Than or Equal to
+	- SUB -- Subtraction
+	- MFLO -- Move from LO
+	- MFHI -- Move from HI
+	- 
 
 ### Running Instruction
 _______________________
