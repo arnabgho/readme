@@ -178,7 +178,8 @@ Break Statement
 __________________________
 
 ```
-for i in [1,2,3]:
+i=1
+while i<=3:
   if i == 2:
     break
   else :
@@ -192,7 +193,8 @@ Continue Statement
 __________________________
 
 ```
-for i in [1,2,3]:
+i=1
+while i<=3:
   if i == 2:
     continue
   else :
