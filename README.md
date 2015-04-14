@@ -11,7 +11,7 @@ CS335A: Compiler Design (Assignment 4: ASSEMBLY CODE GENERATOR)
 ### MIPS Assembly Code Representation
 _____________________________________
 
-1. Representation: ```opcode rd rs```
+1. Representation: ```opcode rd rs rt```
 
 2. Operators:
 
@@ -69,6 +69,8 @@ ______________________________________________________
 	* symbolTable.py [Python source file with necessary functions related to symbol table]
 	* tac.py [Python scource file with necessary functions related to Three Address Code Representation]
 * src:
+	* runTimeCode.py  [ Python source which is used for efficient allocation & maintenance of registers as a 			helper function for codegen.py ]
+ 	* codegen.py    [ Python source file which runs the parser and uses the TAC codes to generate the final 				assembly code ]
 	* converter.py [Python source file to convert the dump of parser into dot file: may be needed for debugging]
 	* lex.py [Python source file from PLY for lexing]
 	* lexer.py [Python source file to specify language lexemes]
@@ -179,6 +181,41 @@ while a > 0:
 
 ```
 
+Break Statement
+__________________________
+
+```
+for i in [1,2,3]:
+  if i == 2:
+    break
+  else :
+    i = 3
+```
+
+
+
+
+Continue Statement
+__________________________
+
+```
+for i in [1,2,3]:
+  if i == 2:
+    continue
+  else :
+    i = 3
+```
+Some Library function calls
+_________________________________
+
+
+*max
+_________
+print max(4,5)
+
+*min
+___________
+print min(4,5)
 
 Function Without Parameters
 ______________________________________
@@ -234,6 +271,7 @@ print x
 ```
 
 Nested Functions : A special feature of our compiler
+===================================================
 _________________________________________________
 ```
 def f():
@@ -255,34 +293,14 @@ def fib(n):
 x = fib(3)
 print x
 ```
-Break Statement
-__________________________
 
-```
-for i in [1,2,3]:
-  if i == 2:
-    break
-  else :
-    i = 3
-```
-
-
-
-
-Continue Statement
-__________________________
-
-```
-for i in [1,2,3]:
-  if i == 2:
-    continue
-  else :
-    i = 3
-```
 
 # Python Compiler
 
 ## Language Features
+
+- Library Function calls
+	-some library calls such as max and min have support from our compiler
 - Recursive Functions 
 	- Python supports recursive functions and so does our compiler
 - Function call 
