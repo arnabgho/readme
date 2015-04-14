@@ -18,6 +18,7 @@ _____________________________________
 	- ADD – Add (with overflow)
 	- ADDI -- Add immediate (with overflow)
 	- AND -- Bitwise and
+	- B-- Unconditional Branch
 	- BEQ -- Branch on equal
 	- BGEZ -- Branch on greater than or equal to zero
 	- BGTZ -- Branch on greater than zero
@@ -32,7 +33,6 @@ _____________________________________
 	- MULT -- Multiply
 	- NOOP -- no operation
 	- OR -- Bitwise or
-	- ORI -- Bitwise or immediate
 	- SLL -- Shift left logical 
 	- SUB -- Subtract
 	- SW -- Store word
@@ -45,10 +45,10 @@ _____________________________________
 	- SGT -- Signed Greater Than
 	- SLE -- Signed Less Than or Equal to
 	- SGE -- Signed Greater Than or Equal to
+	- SEQ -- Signed Equal To
 	- SUB -- Subtraction
 	- MFLO -- Move from LO
 	- MFHI -- Move from HI
-	- 
 
 ### Running Instruction
 _______________________
