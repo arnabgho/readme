@@ -17,7 +17,6 @@ _____________________________________
 
 	- ADD – Add (with overflow)
 	- ADDI -- Add immediate (with overflow)
-	- ADDU -- Add unsigned (no overflow)
 	- AND -- Bitwise and
 	- BEQ -- Branch on equal
 	- BGEZ -- Branch on greater than or equal to zero
@@ -25,7 +24,6 @@ _____________________________________
 	- BLEZ -- Branch on less than or equal to zero
 	- BNE -- Branch on not equal
 	- DIV -- Divide
-	- DIVU -- Divide unsigned
 	- J -- Jump
 	- JAL -- Jump and link
 	- JR -- Jump register
@@ -38,7 +36,7 @@ _____________________________________
 	- SUB -- Subtract
 	- SW -- Store word
 	- SYSCALL -- System call
-
+	- SRL -- Shift right logical
 
 
 ### Running Instruction
